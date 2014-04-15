@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditPozycjaDokumentuTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditPozycjaDokumentuLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{pozycjaDokumentuController.selected.id}" title="#{bundle.EditPozycjaDokumentuTitle_id}" />
+                    <h:outputLabel value="#{bundle.EditPozycjaDokumentuLabel_dokument}" for="dokument" />
+                    <h:selectOneMenu id="dokument" value="#{pozycjaDokumentuController.selected.dokument}" title="#{bundle.EditPozycjaDokumentuTitle_dokument}" >
+                        <f:selectItems value="#{dokumentController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPozycjaDokumentuLabel_nazwa}" for="nazwa" />
+                    <h:inputText id="nazwa" value="#{pozycjaDokumentuController.selected.nazwa}" title="#{bundle.EditPozycjaDokumentuTitle_nazwa}" />
+                    <h:outputLabel value="#{bundle.EditPozycjaDokumentuLabel_pkwiu}" for="pkwiu" />
+                    <h:inputText id="pkwiu" value="#{pozycjaDokumentuController.selected.pkwiu}" title="#{bundle.EditPozycjaDokumentuTitle_pkwiu}" />
+                    <h:outputLabel value="#{bundle.EditPozycjaDokumentuLabel_ilosc}" for="ilosc" />
+                    <h:inputText id="ilosc" value="#{pozycjaDokumentuController.selected.ilosc}" title="#{bundle.EditPozycjaDokumentuTitle_ilosc}" />
+                    <h:outputLabel value="#{bundle.EditPozycjaDokumentuLabel_jednostkaMiary}" for="jednostkaMiary" />
+                    <h:selectOneMenu id="jednostkaMiary" value="#{pozycjaDokumentuController.selected.jednostkaMiary}" title="#{bundle.EditPozycjaDokumentuTitle_jednostkaMiary}" >
+                        <f:selectItems value="#{jednostkaMiaryController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPozycjaDokumentuLabel_cenaNetto}" for="cenaNetto" />
+                    <h:inputText id="cenaNetto" value="#{pozycjaDokumentuController.selected.cenaNetto}" title="#{bundle.EditPozycjaDokumentuTitle_cenaNetto}" />
+                    <h:outputLabel value="#{bundle.EditPozycjaDokumentuLabel_stawkaVAT}" for="stawkaVAT" />
+                    <h:selectOneMenu id="stawkaVAT" value="#{pozycjaDokumentuController.selected.stawkaVAT}" title="#{bundle.EditPozycjaDokumentuTitle_stawkaVAT}" >
+                        <f:selectItems value="#{stawkaVATController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPozycjaDokumentuLabel_wartoscVAT}" for="wartoscVAT" />
+                    <h:inputText id="wartoscVAT" value="#{pozycjaDokumentuController.selected.wartoscVAT}" title="#{bundle.EditPozycjaDokumentuTitle_wartoscVAT}" />
+                    <h:outputLabel value="#{bundle.EditPozycjaDokumentuLabel_wartoscNetto}" for="wartoscNetto" />
+                    <h:inputText id="wartoscNetto" value="#{pozycjaDokumentuController.selected.wartoscNetto}" title="#{bundle.EditPozycjaDokumentuTitle_wartoscNetto}" />
+                    <h:outputLabel value="#{bundle.EditPozycjaDokumentuLabel_wartoscBrutto}" for="wartoscBrutto" />
+                    <h:inputText id="wartoscBrutto" value="#{pozycjaDokumentuController.selected.wartoscBrutto}" title="#{bundle.EditPozycjaDokumentuTitle_wartoscBrutto}" />
+                    <h:outputLabel value="#{bundle.EditPozycjaDokumentuLabel_lp}" for="lp" />
+                    <h:inputText id="lp" value="#{pozycjaDokumentuController.selected.lp}" title="#{bundle.EditPozycjaDokumentuTitle_lp}" />
+                </h:panelGrid>
+                <h:commandLink action="#{pozycjaDokumentuController.update}" value="#{bundle.EditPozycjaDokumentuSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditPozycjaDokumentuViewLink}"/>
+                <br />
+                <h:commandLink action="#{pozycjaDokumentuController.prepareList}" value="#{bundle.EditPozycjaDokumentuShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditPozycjaDokumentuIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTypDokumentuTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTypDokumentuLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{typDokumentuController.selected.id}" title="#{bundle.EditTypDokumentuTitle_id}" />
+                    <h:outputLabel value="#{bundle.EditTypDokumentuLabel_nazwa}" for="nazwa" />
+                    <h:inputText id="nazwa" value="#{typDokumentuController.selected.nazwa}" title="#{bundle.EditTypDokumentuTitle_nazwa}" />
+                    <h:outputLabel value="#{bundle.EditTypDokumentuLabel_skrot}" for="skrot" />
+                    <h:inputText id="skrot" value="#{typDokumentuController.selected.skrot}" title="#{bundle.EditTypDokumentuTitle_skrot}" />
+                    <h:outputLabel value="#{bundle.EditTypDokumentuLabel_opis}" for="opis" />
+                    <h:inputText id="opis" value="#{typDokumentuController.selected.opis}" title="#{bundle.EditTypDokumentuTitle_opis}" />
+                </h:panelGrid>
+                <h:commandLink action="#{typDokumentuController.update}" value="#{bundle.EditTypDokumentuSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditTypDokumentuViewLink}"/>
+                <br />
+                <h:commandLink action="#{typDokumentuController.prepareList}" value="#{bundle.EditTypDokumentuShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditTypDokumentuIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

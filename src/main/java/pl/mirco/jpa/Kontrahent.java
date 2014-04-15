@@ -90,7 +90,7 @@ public class Kontrahent implements Serializable {
 
     @Override
     public String toString() {
-        return "pl.mirco.model.Kontrahent[ id=" + id + " ]";
+        return nazwa + " " + nip;
     }
 
     public String getNazwa() {

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPozycjaDokumentuTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPozycjaDokumentuEmpty}" rendered="#{pozycjaDokumentuController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{pozycjaDokumentuController.items.rowCount > 0}">
+                    <h:outputText value="#{pozycjaDokumentuController.pagination.pageFirstItem + 1}..#{pozycjaDokumentuController.pagination.pageLastItem + 1}/#{pozycjaDokumentuController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{pozycjaDokumentuController.previous}" value="#{bundle.Previous} #{pozycjaDokumentuController.pagination.pageSize}" rendered="#{pozycjaDokumentuController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{pozycjaDokumentuController.next}" value="#{bundle.Next} #{pozycjaDokumentuController.pagination.pageSize}" rendered="#{pozycjaDokumentuController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{pozycjaDokumentuController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPozycjaDokumentuTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPozycjaDokumentuTitle_dokument}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dokument}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPozycjaDokumentuTitle_nazwa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nazwa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPozycjaDokumentuTitle_pkwiu}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pkwiu}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPozycjaDokumentuTitle_ilosc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ilosc}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPozycjaDokumentuTitle_jednostkaMiary}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.jednostkaMiary}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPozycjaDokumentuTitle_cenaNetto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cenaNetto}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPozycjaDokumentuTitle_stawkaVAT}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.stawkaVAT}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPozycjaDokumentuTitle_wartoscVAT}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.wartoscVAT}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPozycjaDokumentuTitle_wartoscNetto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.wartoscNetto}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPozycjaDokumentuTitle_wartoscBrutto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.wartoscBrutto}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPozycjaDokumentuTitle_lp}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lp}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{pozycjaDokumentuController.prepareView}" value="#{bundle.ListPozycjaDokumentuViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{pozycjaDokumentuController.prepareEdit}" value="#{bundle.ListPozycjaDokumentuEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{pozycjaDokumentuController.destroy}" value="#{bundle.ListPozycjaDokumentuDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{pozycjaDokumentuController.prepareCreate}" value="#{bundle.ListPozycjaDokumentuCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListPozycjaDokumentuIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

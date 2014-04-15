@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPozycjaDokumentuTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPozycjaDokumentuLabel_id}"/>
+                    <h:outputText value="#{pozycjaDokumentuController.selected.id}" title="#{bundle.ViewPozycjaDokumentuTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewPozycjaDokumentuLabel_dokument}"/>
+                    <h:outputText value="#{pozycjaDokumentuController.selected.dokument}" title="#{bundle.ViewPozycjaDokumentuTitle_dokument}"/>
+                    <h:outputText value="#{bundle.ViewPozycjaDokumentuLabel_nazwa}"/>
+                    <h:outputText value="#{pozycjaDokumentuController.selected.nazwa}" title="#{bundle.ViewPozycjaDokumentuTitle_nazwa}"/>
+                    <h:outputText value="#{bundle.ViewPozycjaDokumentuLabel_pkwiu}"/>
+                    <h:outputText value="#{pozycjaDokumentuController.selected.pkwiu}" title="#{bundle.ViewPozycjaDokumentuTitle_pkwiu}"/>
+                    <h:outputText value="#{bundle.ViewPozycjaDokumentuLabel_ilosc}"/>
+                    <h:outputText value="#{pozycjaDokumentuController.selected.ilosc}" title="#{bundle.ViewPozycjaDokumentuTitle_ilosc}"/>
+                    <h:outputText value="#{bundle.ViewPozycjaDokumentuLabel_jednostkaMiary}"/>
+                    <h:outputText value="#{pozycjaDokumentuController.selected.jednostkaMiary}" title="#{bundle.ViewPozycjaDokumentuTitle_jednostkaMiary}"/>
+                    <h:outputText value="#{bundle.ViewPozycjaDokumentuLabel_cenaNetto}"/>
+                    <h:outputText value="#{pozycjaDokumentuController.selected.cenaNetto}" title="#{bundle.ViewPozycjaDokumentuTitle_cenaNetto}"/>
+                    <h:outputText value="#{bundle.ViewPozycjaDokumentuLabel_stawkaVAT}"/>
+                    <h:outputText value="#{pozycjaDokumentuController.selected.stawkaVAT}" title="#{bundle.ViewPozycjaDokumentuTitle_stawkaVAT}"/>
+                    <h:outputText value="#{bundle.ViewPozycjaDokumentuLabel_wartoscVAT}"/>
+                    <h:outputText value="#{pozycjaDokumentuController.selected.wartoscVAT}" title="#{bundle.ViewPozycjaDokumentuTitle_wartoscVAT}"/>
+                    <h:outputText value="#{bundle.ViewPozycjaDokumentuLabel_wartoscNetto}"/>
+                    <h:outputText value="#{pozycjaDokumentuController.selected.wartoscNetto}" title="#{bundle.ViewPozycjaDokumentuTitle_wartoscNetto}"/>
+                    <h:outputText value="#{bundle.ViewPozycjaDokumentuLabel_wartoscBrutto}"/>
+                    <h:outputText value="#{pozycjaDokumentuController.selected.wartoscBrutto}" title="#{bundle.ViewPozycjaDokumentuTitle_wartoscBrutto}"/>
+                    <h:outputText value="#{bundle.ViewPozycjaDokumentuLabel_lp}"/>
+                    <h:outputText value="#{pozycjaDokumentuController.selected.lp}" title="#{bundle.ViewPozycjaDokumentuTitle_lp}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pozycjaDokumentuController.destroyAndView}" value="#{bundle.ViewPozycjaDokumentuDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPozycjaDokumentuEditLink}"/>
+                <br />
+                <h:commandLink action="#{pozycjaDokumentuController.prepareCreate}" value="#{bundle.ViewPozycjaDokumentuCreateLink}" />
+                <br />
+                <h:commandLink action="#{pozycjaDokumentuController.prepareList}" value="#{bundle.ViewPozycjaDokumentuShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPozycjaDokumentuIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDokumentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditDokumentLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{dokumentController.selected.id}" title="#{bundle.EditDokumentTitle_id}" />
+                    <h:outputLabel value="#{bundle.EditDokumentLabel_typDokumentu}" for="typDokumentu" />
+                    <h:selectOneMenu id="typDokumentu" value="#{dokumentController.selected.typDokumentu}" title="#{bundle.EditDokumentTitle_typDokumentu}" >
+                        <f:selectItems value="#{typDokumentuController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDokumentLabel_nazwa}" for="nazwa" />
+                    <h:inputText id="nazwa" value="#{dokumentController.selected.nazwa}" title="#{bundle.EditDokumentTitle_nazwa}" />
+                    <h:outputLabel value="#{bundle.EditDokumentLabel_kontrahent}" for="kontrahent" />
+                    <h:selectOneMenu id="kontrahent" value="#{dokumentController.selected.kontrahent}" title="#{bundle.EditDokumentTitle_kontrahent}" >
+                        <f:selectItems value="#{kontrahentController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDokumentLabel_dataWystawienia}" for="dataWystawienia" />
+                    <h:inputText id="dataWystawienia" value="#{dokumentController.selected.dataWystawienia}" title="#{bundle.EditDokumentTitle_dataWystawienia}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditDokumentLabel_miejcsceWystawienia}" for="miejcsceWystawienia" />
+                    <h:inputText id="miejcsceWystawienia" value="#{dokumentController.selected.miejcsceWystawienia}" title="#{bundle.EditDokumentTitle_miejcsceWystawienia}" />
+                    <h:outputLabel value="#{bundle.EditDokumentLabel_dataSprzedazy}" for="dataSprzedazy" />
+                    <h:inputText id="dataSprzedazy" value="#{dokumentController.selected.dataSprzedazy}" title="#{bundle.EditDokumentTitle_dataSprzedazy}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditDokumentLabel_terminPlatnosci}" for="terminPlatnosci" />
+                    <h:inputText id="terminPlatnosci" value="#{dokumentController.selected.terminPlatnosci}" title="#{bundle.EditDokumentTitle_terminPlatnosci}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditDokumentLabel_formaPlatnosci}" for="formaPlatnosci" />
+                    <h:inputText id="formaPlatnosci" value="#{dokumentController.selected.formaPlatnosci}" title="#{bundle.EditDokumentTitle_formaPlatnosci}" />
+                    <h:outputLabel value="#{bundle.EditDokumentLabel_opis}" for="opis" />
+                    <h:inputText id="opis" value="#{dokumentController.selected.opis}" title="#{bundle.EditDokumentTitle_opis}" />
+                    <h:outputLabel value="#{bundle.EditDokumentLabel_uzytkownik}" for="uzytkownik" />
+                    <h:selectOneMenu id="uzytkownik" value="#{dokumentController.selected.uzytkownik}" title="#{bundle.EditDokumentTitle_uzytkownik}" >
+                        <f:selectItems value="#{uzytkownikController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{dokumentController.update}" value="#{bundle.EditDokumentSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditDokumentViewLink}"/>
+                <br />
+                <h:commandLink action="#{dokumentController.prepareList}" value="#{bundle.EditDokumentShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditDokumentIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

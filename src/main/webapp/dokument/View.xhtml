@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDokumentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewDokumentLabel_id}"/>
+                    <h:outputText value="#{dokumentController.selected.id}" title="#{bundle.ViewDokumentTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewDokumentLabel_typDokumentu}"/>
+                    <h:outputText value="#{dokumentController.selected.typDokumentu}" title="#{bundle.ViewDokumentTitle_typDokumentu}"/>
+                    <h:outputText value="#{bundle.ViewDokumentLabel_nazwa}"/>
+                    <h:outputText value="#{dokumentController.selected.nazwa}" title="#{bundle.ViewDokumentTitle_nazwa}"/>
+                    <h:outputText value="#{bundle.ViewDokumentLabel_kontrahent}"/>
+                    <h:outputText value="#{dokumentController.selected.kontrahent}" title="#{bundle.ViewDokumentTitle_kontrahent}"/>
+                    <h:outputText value="#{bundle.ViewDokumentLabel_dataWystawienia}"/>
+                    <h:outputText value="#{dokumentController.selected.dataWystawienia}" title="#{bundle.ViewDokumentTitle_dataWystawienia}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDokumentLabel_miejcsceWystawienia}"/>
+                    <h:outputText value="#{dokumentController.selected.miejcsceWystawienia}" title="#{bundle.ViewDokumentTitle_miejcsceWystawienia}"/>
+                    <h:outputText value="#{bundle.ViewDokumentLabel_dataSprzedazy}"/>
+                    <h:outputText value="#{dokumentController.selected.dataSprzedazy}" title="#{bundle.ViewDokumentTitle_dataSprzedazy}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDokumentLabel_terminPlatnosci}"/>
+                    <h:outputText value="#{dokumentController.selected.terminPlatnosci}" title="#{bundle.ViewDokumentTitle_terminPlatnosci}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDokumentLabel_formaPlatnosci}"/>
+                    <h:outputText value="#{dokumentController.selected.formaPlatnosci}" title="#{bundle.ViewDokumentTitle_formaPlatnosci}"/>
+                    <h:outputText value="#{bundle.ViewDokumentLabel_opis}"/>
+                    <h:outputText value="#{dokumentController.selected.opis}" title="#{bundle.ViewDokumentTitle_opis}"/>
+                    <h:outputText value="#{bundle.ViewDokumentLabel_uzytkownik}"/>
+                    <h:outputText value="#{dokumentController.selected.uzytkownik}" title="#{bundle.ViewDokumentTitle_uzytkownik}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{dokumentController.destroyAndView}" value="#{bundle.ViewDokumentDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewDokumentEditLink}"/>
+                <br />
+                <h:commandLink action="#{dokumentController.prepareCreate}" value="#{bundle.ViewDokumentCreateLink}" />
+                <br />
+                <h:commandLink action="#{dokumentController.prepareList}" value="#{bundle.ViewDokumentShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewDokumentIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

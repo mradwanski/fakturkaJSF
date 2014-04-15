@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditStawkaVATTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditStawkaVATLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{stawkaVATController.selected.id}" title="#{bundle.EditStawkaVATTitle_id}" />
+                    <h:outputLabel value="#{bundle.EditStawkaVATLabel_nazwa}" for="nazwa" />
+                    <h:inputText id="nazwa" value="#{stawkaVATController.selected.nazwa}" title="#{bundle.EditStawkaVATTitle_nazwa}" />
+                    <h:outputLabel value="#{bundle.EditStawkaVATLabel_wartosc}" for="wartosc" />
+                    <h:inputText id="wartosc" value="#{stawkaVATController.selected.wartosc}" title="#{bundle.EditStawkaVATTitle_wartosc}" />
+                    <h:outputLabel value="#{bundle.EditStawkaVATLabel_opis}" for="opis" />
+                    <h:inputText id="opis" value="#{stawkaVATController.selected.opis}" title="#{bundle.EditStawkaVATTitle_opis}" />
+                </h:panelGrid>
+                <h:commandLink action="#{stawkaVATController.update}" value="#{bundle.EditStawkaVATSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditStawkaVATViewLink}"/>
+                <br />
+                <h:commandLink action="#{stawkaVATController.prepareList}" value="#{bundle.EditStawkaVATShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditStawkaVATIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

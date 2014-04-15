@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDokumentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListDokumentEmpty}" rendered="#{dokumentController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{dokumentController.items.rowCount > 0}">
+                    <h:outputText value="#{dokumentController.pagination.pageFirstItem + 1}..#{dokumentController.pagination.pageLastItem + 1}/#{dokumentController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{dokumentController.previous}" value="#{bundle.Previous} #{dokumentController.pagination.pageSize}" rendered="#{dokumentController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{dokumentController.next}" value="#{bundle.Next} #{dokumentController.pagination.pageSize}" rendered="#{dokumentController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{dokumentController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDokumentTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDokumentTitle_typDokumentu}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.typDokumentu}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDokumentTitle_nazwa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nazwa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDokumentTitle_kontrahent}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.kontrahent}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDokumentTitle_dataWystawienia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataWystawienia}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDokumentTitle_miejcsceWystawienia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.miejcsceWystawienia}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDokumentTitle_dataSprzedazy}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataSprzedazy}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDokumentTitle_terminPlatnosci}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.terminPlatnosci}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDokumentTitle_formaPlatnosci}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.formaPlatnosci}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDokumentTitle_opis}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.opis}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDokumentTitle_uzytkownik}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.uzytkownik}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{dokumentController.prepareView}" value="#{bundle.ListDokumentViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{dokumentController.prepareEdit}" value="#{bundle.ListDokumentEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{dokumentController.destroy}" value="#{bundle.ListDokumentDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{dokumentController.prepareCreate}" value="#{bundle.ListDokumentCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListDokumentIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

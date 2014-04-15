@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateKontrahentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateKontrahentLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{kontrahentController.selected.id}" title="#{bundle.CreateKontrahentTitle_id}" />
+                    <h:outputLabel value="#{bundle.CreateKontrahentLabel_nazwa}" for="nazwa" />
+                    <h:inputText id="nazwa" value="#{kontrahentController.selected.nazwa}" title="#{bundle.CreateKontrahentTitle_nazwa}" />
+                    <h:outputLabel value="#{bundle.CreateKontrahentLabel_nip}" for="nip" />
+                    <h:inputText id="nip" value="#{kontrahentController.selected.nip}" title="#{bundle.CreateKontrahentTitle_nip}" />
+                    <h:outputLabel value="#{bundle.CreateKontrahentLabel_ulica}" for="ulica" />
+                    <h:inputText id="ulica" value="#{kontrahentController.selected.ulica}" title="#{bundle.CreateKontrahentTitle_ulica}" />
+                    <h:outputLabel value="#{bundle.CreateKontrahentLabel_kodpocztowy}" for="kodpocztowy" />
+                    <h:inputText id="kodpocztowy" value="#{kontrahentController.selected.kodpocztowy}" title="#{bundle.CreateKontrahentTitle_kodpocztowy}" />
+                    <h:outputLabel value="#{bundle.CreateKontrahentLabel_miejscowosc}" for="miejscowosc" />
+                    <h:inputText id="miejscowosc" value="#{kontrahentController.selected.miejscowosc}" title="#{bundle.CreateKontrahentTitle_miejscowosc}" />
+                    <h:outputLabel value="#{bundle.CreateKontrahentLabel_regon}" for="regon" />
+                    <h:inputText id="regon" value="#{kontrahentController.selected.regon}" title="#{bundle.CreateKontrahentTitle_regon}" />
+                    <h:outputLabel value="#{bundle.CreateKontrahentLabel_telefon}" for="telefon" />
+                    <h:inputText id="telefon" value="#{kontrahentController.selected.telefon}" title="#{bundle.CreateKontrahentTitle_telefon}" />
+                    <h:outputLabel value="#{bundle.CreateKontrahentLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{kontrahentController.selected.email}" title="#{bundle.CreateKontrahentTitle_email}" />
+                    <h:outputLabel value="#{bundle.CreateKontrahentLabel_opis}" for="opis" />
+                    <h:inputText id="opis" value="#{kontrahentController.selected.opis}" title="#{bundle.CreateKontrahentTitle_opis}" />
+                    <h:outputLabel value="#{bundle.CreateKontrahentLabel_dataDodania}" for="dataDodania" />
+                    <h:inputText id="dataDodania" value="#{kontrahentController.selected.dataDodania}" title="#{bundle.CreateKontrahentTitle_dataDodania}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{kontrahentController.create}" value="#{bundle.CreateKontrahentSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{kontrahentController.prepareList}" value="#{bundle.CreateKontrahentShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateKontrahentIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

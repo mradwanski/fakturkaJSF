@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListJednostkaMiaryTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListJednostkaMiaryEmpty}" rendered="#{jednostkaMiaryController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{jednostkaMiaryController.items.rowCount > 0}">
+                    <h:outputText value="#{jednostkaMiaryController.pagination.pageFirstItem + 1}..#{jednostkaMiaryController.pagination.pageLastItem + 1}/#{jednostkaMiaryController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{jednostkaMiaryController.previous}" value="#{bundle.Previous} #{jednostkaMiaryController.pagination.pageSize}" rendered="#{jednostkaMiaryController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{jednostkaMiaryController.next}" value="#{bundle.Next} #{jednostkaMiaryController.pagination.pageSize}" rendered="#{jednostkaMiaryController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{jednostkaMiaryController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListJednostkaMiaryTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListJednostkaMiaryTitle_nazwa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nazwa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListJednostkaMiaryTitle_opis}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.opis}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{jednostkaMiaryController.prepareView}" value="#{bundle.ListJednostkaMiaryViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{jednostkaMiaryController.prepareEdit}" value="#{bundle.ListJednostkaMiaryEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{jednostkaMiaryController.destroy}" value="#{bundle.ListJednostkaMiaryDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{jednostkaMiaryController.prepareCreate}" value="#{bundle.ListJednostkaMiaryCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListJednostkaMiaryIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

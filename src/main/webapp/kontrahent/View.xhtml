@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewKontrahentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewKontrahentLabel_id}"/>
+                    <h:outputText value="#{kontrahentController.selected.id}" title="#{bundle.ViewKontrahentTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewKontrahentLabel_nazwa}"/>
+                    <h:outputText value="#{kontrahentController.selected.nazwa}" title="#{bundle.ViewKontrahentTitle_nazwa}"/>
+                    <h:outputText value="#{bundle.ViewKontrahentLabel_nip}"/>
+                    <h:outputText value="#{kontrahentController.selected.nip}" title="#{bundle.ViewKontrahentTitle_nip}"/>
+                    <h:outputText value="#{bundle.ViewKontrahentLabel_ulica}"/>
+                    <h:outputText value="#{kontrahentController.selected.ulica}" title="#{bundle.ViewKontrahentTitle_ulica}"/>
+                    <h:outputText value="#{bundle.ViewKontrahentLabel_kodpocztowy}"/>
+                    <h:outputText value="#{kontrahentController.selected.kodpocztowy}" title="#{bundle.ViewKontrahentTitle_kodpocztowy}"/>
+                    <h:outputText value="#{bundle.ViewKontrahentLabel_miejscowosc}"/>
+                    <h:outputText value="#{kontrahentController.selected.miejscowosc}" title="#{bundle.ViewKontrahentTitle_miejscowosc}"/>
+                    <h:outputText value="#{bundle.ViewKontrahentLabel_regon}"/>
+                    <h:outputText value="#{kontrahentController.selected.regon}" title="#{bundle.ViewKontrahentTitle_regon}"/>
+                    <h:outputText value="#{bundle.ViewKontrahentLabel_telefon}"/>
+                    <h:outputText value="#{kontrahentController.selected.telefon}" title="#{bundle.ViewKontrahentTitle_telefon}"/>
+                    <h:outputText value="#{bundle.ViewKontrahentLabel_email}"/>
+                    <h:outputText value="#{kontrahentController.selected.email}" title="#{bundle.ViewKontrahentTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewKontrahentLabel_opis}"/>
+                    <h:outputText value="#{kontrahentController.selected.opis}" title="#{bundle.ViewKontrahentTitle_opis}"/>
+                    <h:outputText value="#{bundle.ViewKontrahentLabel_dataDodania}"/>
+                    <h:outputText value="#{kontrahentController.selected.dataDodania}" title="#{bundle.ViewKontrahentTitle_dataDodania}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{kontrahentController.destroyAndView}" value="#{bundle.ViewKontrahentDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewKontrahentEditLink}"/>
+                <br />
+                <h:commandLink action="#{kontrahentController.prepareCreate}" value="#{bundle.ViewKontrahentCreateLink}" />
+                <br />
+                <h:commandLink action="#{kontrahentController.prepareList}" value="#{bundle.ViewKontrahentShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewKontrahentIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
